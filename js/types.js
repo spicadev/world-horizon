@@ -47,7 +47,7 @@ if(wh.ok) {
       return this
     }
   }
-  wh.Sprite = class Sprite extends Entity {
+  wh.Sprite = class Sprite extends wh.Entity {
     constructor(name) {
       super()
       this.sprite = null
@@ -60,7 +60,7 @@ if(wh.ok) {
       })
     }
   }
-  wh.Player = class Player extends Sprite {
+  wh.Player = class Player extends wh.Sprite {
     constructor() {
       super('player')
     }
@@ -71,7 +71,7 @@ if(wh.ok) {
   wh.ENEMY_TEXTURES_LIST = [
     'orc', 'goblin', 'demonia', 'demon'
   ]
-  wh.Enemy = class Enemy extends Sprite {
+  wh.Enemy = class Enemy extends wh.Sprite {
     constructor() {
       super(wh.ENEMY_TEXTURES_LIST[Math.floor(Math.random() * wh.ENEMY_TEXTURES_LIST.length)])
       // TODO: Genetate A.I.
