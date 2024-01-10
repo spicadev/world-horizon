@@ -1,22 +1,23 @@
 if(wh.ok) {
-  wh.textures = {}
-  wh.textures.baseUrl = location.origin
-  wh.textures.callbacks = {}
-  wh.textures.list = {}
-  wh.textures.load = (url, as) => {
-    wh.textures.list[as] = document.createElement('img')
-    wh.textures.list[as].src = new URL(url, wh.textures.baseUrl).href
-    wh.textures.list[as].onload = () => {
-      console.log('Load ' + wh.textures.list[as].src + ' as ' + as)
-      wh.textures.callbacks[as] = wh.textures.callbacks[as] || []
-      for(let i = wh.textures.callbacks[as].length - 1; i >= 0; i--) {
-        wh.textures.callbacks[as][i]()
+  const tl = {}
+  tl.baseUrl = location.origin
+  tl.callbacks = {}
+  tl.list = {}
+  tl.load = (url, as) => {
+    tl.list[as] = document.createElement('img')
+    tl.list[as].src = new URL(url, tl.baseUrl).href
+    tl.list[as].onload = () => {
+      wf.log('Load ' + tl.list[as].src + ' as ' + as)
+      tl.callbacks[as] = tl.callbacks[as] || []
+      for(let i = tl.callbacks[as].length - 1; i >= 0; i--) {
+        tl.callbacks[as][i]()
       }
     }
   }
-  wh.textures.apply = (name, cb) => {
-    if(name in wh.textures.list) return wh.textures.list[name]
-    wh.textures.callbacks[name] = wh.textures.callbacks[name] || []
-    wh.textures.callbacks[name].push(cb)
+  tl.apply = (name, cb) => {
+    if(name in tl.list) return tl.list[name]
+    tl.callbacks[name] = tl.callbacks[name] || []
+    tl.callbacks[name].push(cb)
   }
+  wh.sprites = tl
 }
