@@ -10,7 +10,6 @@ if(wh.ok) {
       wh.textures.callbacks[as] = wh.textures.callbacks[as] || []
       for(let i = wh.textures.callbacks[as].length - 1; i >= 0; i--) {
         wh.textures.callbacks[as][i]()
-        delete wh.textures.callbacks[as][i]
       }
       delete wh.textures.callbacks[as]
     }
