@@ -19,6 +19,7 @@ if(wh.ok) {
         wh.error('Failed to set (' + x + ', ' + y + ') to', entity)
         return false
       }
+      entity.world = this
       this.entities[this.getEntityIndex(x, y)] = entity
       return true
     }
@@ -34,17 +35,42 @@ if(wh.ok) {
 
   wh.Entity = class Entity {
     constructor() {
-      this.x = 0
-      this.y = 0
-    }
-
-    setX(x) {
-      this.x = x
-      return this
-    }
-    setY(y) {
-      this.y = y
-      return this
+      let x = 0, y = 0, world = null
+      Object.defineProperties(this, {
+        x: {
+          get: function() {
+            return x
+          },
+          set: function(v) {
+            x = v
+            if(world != null) world.set(x, y, this)
+            return x
+          },
+          enumerable: true
+        },
+        y: {
+          get: function() {
+            return y
+          },
+          set: function(v) {
+            y = v
+            if(world != null) world.set(x, y, this)
+            return y
+          },
+          enumerable: true
+        },
+        world: {
+          get: function() {
+            return world
+          },
+          set: function(v) {
+            world = v
+            world.set(x, y, this)
+            return world
+          },
+          enumerable: false
+        }
+      })
     }
   }
   wh.Sprite = class Sprite extends wh.Entity {
