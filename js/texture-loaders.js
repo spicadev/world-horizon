@@ -7,7 +7,7 @@ if(wh.ok) {
     wh.textures.list[as] = document.createElement('img')
     wh.textures.list[as].src = new URL(url, wh.textures.baseUrl).href
     wh.textures.list[as].onload = () => {
-      wh.tetures.callbacks[as] = wh.tetures.callbacks[as] || []
+      wh.textures.callbacks[as] = wh.textures.callbacks[as] || []
       for(let i = wh.textures.callbacks[as].length - 1; i >= 0; i--) {
         wh.textures.callbacks[as][i]()
         delete wh.textures.callbacks[as][i]
