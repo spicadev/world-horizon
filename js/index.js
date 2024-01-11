@@ -42,4 +42,12 @@ if(ok) {
       wh.keyPressed[e.key.toLowerCase()] = false
     }, true)
   }
+
+  wh.DEBUG = true
+  wh.log = function(...args) {
+    if(wh.DEBUG) console.log(...args)
+  }
+  wh.error = function(...args) {
+    if(wh.DEBUG) console.error(...args)
+  }
 }
