@@ -5,7 +5,7 @@ if(wh.ok) {
     delta: 0,
     background: '#000000',
     start: function start() {
-      return requesrAnimationFrame(loop)
+      return requestAnimationFrame(loop)
     }
   }
   wh.world = new wh.World()
@@ -26,5 +26,5 @@ if(wh.ok) {
   }
   wy.world.set(10, 0, new wh.Sprite('test'))
 
-  requestAnimationFrame(loop)
+  wh.scene.start()
 }
