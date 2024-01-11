@@ -5,6 +5,7 @@ if(wh.ok) {
     delta: 0
   }
   wh.world = new wh.World()
+  wh.sprites.load('https://previews.123rf.com/images/aoc61/aoc612304/aoc61230400336/202104881-landscape-inside-a-glass-sphere-the-generative.jpg', 'test')
   function loop(timeNow) {
     requestAnimationFrame(loop)
 
@@ -19,6 +20,7 @@ if(wh.ok) {
       }
     }
   }
+  wy.world.add(new wh.Sprite('test'))
 
   requestAnimationFrame(loop)
 }
