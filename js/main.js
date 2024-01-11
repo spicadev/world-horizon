@@ -8,7 +8,7 @@ if(wh.ok) {
       return requestAnimationFrame(loop)
     }
   }
-  wh.world = new wh.World()
+  wh.world = new World()
   wh.sprites.load('https://previews.123rf.com/images/aoc61/aoc612304/aoc61230400336/202104881-landscape-inside-a-glass-sphere-the-generative.jpg', 'test')
   function loop(timeNow) {
     if(!wh.scene.pause) requestAnimationFrame(loop)
@@ -24,7 +24,7 @@ if(wh.ok) {
       }
     }
   }
-  wh.world.set(10, 0, new wh.Sprite('test'))
+  wh.world.set(10, 0, new Sprite('test'))
 
   wh.scene.start()
 }
