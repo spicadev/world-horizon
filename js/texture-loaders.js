@@ -7,7 +7,7 @@ if(wh.ok) {
     tl.list[as] = document.createElement('img')
     tl.list[as].src = new URL(url, tl.baseUrl).href
     tl.list[as].onload = () => {
-      wf.log('Load ' + tl.list[as].src + ' as ' + as)
+      wh.log('Load ' + tl.list[as].src + ' as ' + as)
       tl.callbacks[as] = tl.callbacks[as] || []
       for(let i = tl.callbacks[as].length - 1; i >= 0; i--) {
         tl.callbacks[as][i]()
