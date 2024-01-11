@@ -24,7 +24,7 @@ if(wh.ok) {
       }
     }
   }
-  wy.world.set(10, 0, new wh.Sprite('test'))
+  wh.world.set(10, 0, new wh.Sprite('test'))
 
   wh.scene.start()
 }
