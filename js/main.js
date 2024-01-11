@@ -2,12 +2,16 @@ if(wh.ok) {
   wh.scene = {
     pause: false,
     lastFrameTime: 0,
-    delta: 0
+    delta: 0,
+    background: '#000000',
+    start: function start() {
+      return requesrAnimationFrame(loop)
+    }
   }
   wh.world = new wh.World()
   wh.sprites.load('https://previews.123rf.com/images/aoc61/aoc612304/aoc61230400336/202104881-landscape-inside-a-glass-sphere-the-generative.jpg', 'test')
   function loop(timeNow) {
-    requestAnimationFrame(loop)
+    if(!wh.scene.pause) requestAnimationFrame(loop)
 
     wh.scene.delta = (timeNow - wh.scene.lastFrameTime) / 1000
     wh.scene.lastFrameTime = timeNow
@@ -20,7 +24,7 @@ if(wh.ok) {
       }
     }
   }
-  wy.world.add(new wh.Sprite('test'))
+  wy.world.set(10, 0, new wh.Sprite('test'))
 
   requestAnimationFrame(loop)
 }
