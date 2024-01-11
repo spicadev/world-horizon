@@ -23,7 +23,7 @@ if(wh.ok) {
         entity.world = this
         return false
       }
-      this.entities[this.getEntityIndex(x, y)] = entity
+      this.entities[this.indexOf(x, y)] = entity
       return true
     }
 
