@@ -1,5 +1,5 @@
 if(wh.ok) {
-  wh.World = class World {
+  window.World = class World {
     constructor() {
       const entities = []
       Object.defineProperty(this, 'entities', {
@@ -15,7 +15,7 @@ if(wh.ok) {
     }
     
     set(x, y, entity) {
-      if(!(entity instanceof wh.Entity)) {
+      if(!(entity instanceof Entity)) {
         wh.error('Failed to set (' + x + ', ' + y + ') to', entity)
         return false
       } else if(entity.world != this) {
@@ -23,7 +23,7 @@ if(wh.ok) {
         entity.world = this
         return false
       }
-      this.entities[this.indexOf(x, y)] = entity
+      this.entities[World.indexOf(x, y)] = entity
       return true
     }
 
@@ -31,12 +31,12 @@ if(wh.ok) {
       return this.set(x, y, null)
     }
 
-    indexOf(x, y) {
+    static indexOf(x, y) {
       return y * this.width + x
     }
   }
 
-  wh.Entity = class Entity {
+  window.Entity = class Entity {
     constructor() {
       let x = 0, y = 0, world = null
       Object.defineProperties(this, {
@@ -76,7 +76,7 @@ if(wh.ok) {
       })
     }
   }
-  wh.Sprite = class Sprite extends wh.Entity {
+  window.Sprite = class Sprite extends Entity {
     constructor(name) {
       super()
       this.sprite = null
@@ -89,7 +89,7 @@ if(wh.ok) {
       })
     }
   }
-  wh.Player = class Player extends wh.Sprite {
+  window.Player = class Player extends Sprite {
     constructor() {
       super('player')
     }
@@ -97,12 +97,12 @@ if(wh.ok) {
       // TODO: Implement this
     }
   }
-  wh.ENEMY_TEXTURES_LIST = [
+  window.ENEMY_TEXTURES_LIST = [
     'orc', 'goblin', 'demonia', 'demon'
   ]
-  wh.Enemy = class Enemy extends wh.Sprite {
+  window.Enemy = class Enemy extends Sprite {
     constructor() {
-      super(wh.ENEMY_TEXTURES_LIST[Math.floor(Math.random() * wh.ENEMY_TEXTURES_LIST.length)])
+      super(ENEMY_TEXTURES_LIST[Math.floor(Math.random() * ENEMY_TEXTURES_LIST.length)])
       // TODO: Genetate A.I.
     }
   }
