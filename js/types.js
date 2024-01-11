@@ -18,8 +18,7 @@ if(wh.ok) {
       if(!(entity instanceof wh.Entity)) {
         wh.error('Failed to set (' + x + ', ' + y + ') to', entity)
         return false
-      }
-      entity.world = this
+      } else if(entity.world != this) return entity.world = this
       this.entities[this.getEntityIndex(x, y)] = entity
       return true
     }
